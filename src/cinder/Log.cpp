@@ -156,7 +156,8 @@ void LogManager::write( const Metadata &meta, const std::string &text )
 	// TODO move this to a shared_lock_timed with c++14 support
 	lock_guard<mutex> lock( mMutex );
 
-	for( auto& logger : mLoggers ) {
+    OutputDebugStringA(text.c_str());
+    for( auto& logger : mLoggers ) {
 		logger->write( meta, text );
 	}
 }
